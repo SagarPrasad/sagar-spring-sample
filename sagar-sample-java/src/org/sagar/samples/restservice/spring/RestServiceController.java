@@ -81,6 +81,26 @@ public class RestServiceController {
 		return user;
 	}
 	
+	@RequestMapping(value = "/user/json/consume", method = RequestMethod.POST, consumes="application/json")
+	public @ResponseBody UserObj consumeJSONReturnJSON(@RequestBody UserObj userJSON){
+		System.out.println("Received in JSON");
+		UserObj user = new UserObj();
+		user.setDescription(userJSON.getDescription());
+		user.setName(userJSON.getName());
+		return user;
+	}
+	
+	@RequestMapping(value = "/user/json/consume", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public UserObj produceJSONReturnJSON(@RequestBody UserObj userJSON){
+		System.out.println("Received in JSON");
+		UserObj user = new UserObj();
+		user.setDescription(userJSON.getDescription());
+		user.setName(userJSON.getName());
+		return user;
+	}
+	
+	
 	/*public @ResponseBody String returnHttpErrorCodeOnParam(){
 		return null;
 	}
